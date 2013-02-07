@@ -1,0 +1,30 @@
+<html>
+ <title>
+	<script lang="javascript" src="phonegap.js"/>
+	<script>
+	 function tomarFoto() {     
+		navigator.camera.getPicture(mostrarFoto, errorFoto, { quality: 50,
+        destinationType: navigator.camera.destinationType.DATA_URL,
+        sourceType: navigator.camera.sourceType.CAMERA });
+  	 }
+
+function mostrarFoto(imageData) {
+      var elementoImagen =
+	  document.getElementById('foto');
+      //elementoImagen.style.display = 'block';     
+      elementoImagen.src = "data:image/jpeg;base64," +imageData;
+  }
+
+function errorFoto(mensaje)
+{
+	alert("pailas");
+}	
+	</script>
+	</title>
+<body>
+<div>
+<img src="" id="foto"/>
+</div>
+<input type="button" onClick="tomarFoto();"/>
+</body>
+</html>
