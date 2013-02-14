@@ -16,7 +16,7 @@ targetHeight: 100,
 };
 navigator.camera.getPicture(mostrarFoto, errorFoto, cameraOptions);
 
-function mostrarFoto(ubicacion){
+function mostrarFoto(ubicacion){//
 var photo = document.getElementById("iddetalleserviciofoto");
 photo.src = "data:image/jpeg;base64," + ubicacion;
 }
