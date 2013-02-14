@@ -2,6 +2,11 @@
  <title>
 	<script lang="javascript" src="phonegap.js"/>
 	<script>
+	
+	function onLoad()
+	{
+	document.addEventListener("deviceready", onDeviceReady, false);
+	}
 	 function tomarFoto() {
 	   navigator.camera.getPicture(mostrarFoto, errorFoto, { quality: 50,
 	   destinationType: navigator.camera.destinationType.DATA_URL,
@@ -21,7 +26,7 @@ function errorFoto(mensaje)
 }	
 	</script>
 	</title>
-<body>
+<body onload="onLoad();">
 <div>
 <img src="" id="foto"/>
 </div>
