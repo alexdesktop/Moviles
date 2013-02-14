@@ -3,38 +3,35 @@
 	<script src="phonegap.js"></script>
 	<script>
 	
-	function onLoad()
-	{
-	document.addEventListener("deviceready", onDeviceReady, false);
-	}
-	
-	function onDeviceReady()
-	{
-	
-	}
-	
-	function tomarFoto() 
-	{
-        navigator.camera.getPicture(mostrarFoto, errorFoto, { quality: 50,destinationType: navigator.camera.DestinationType.FILE_URI,sourceType: navigator.camera.DestinationType.CAMERA });
-	}
 
-function mostrarFoto(imageData) {
- var elementoImagen =
- document.getElementById('foto');
-//elementoImagen.style.display = 'block';
- elementoImagen.src = "data:image/jpeg;base64," +imageData;
+function capturarFoto()
+{
+var cameraOptions = {
+quality : 100,
+destinationType : Camera.DestinationType.DATA_URL,
+sourceType : Camera.PictureSourceType.CAMERA,
+encodingType: Camera.EncodingType.JPEG,
+targetWidth: 100,
+targetHeight: 100,
+};
+navigator.camera.getPicture(mostrarFoto, errorFoto, cameraOptions);
+
+function mostrarFoto(ubicacion){
+var photo = document.getElementById("iddetalleserviciofoto");
+photo.src = "data:image/jpeg;base64," + ubicacion;
 }
 
-function errorFoto(mensaje)
-{
-	alert("pailas");
-}	
+function errorFoto(error){
+alert('Error al generar foto: '+error);
+}
+}
+
 	</script>
 	</title>
 <body onload="onLoad();">
 <div>
-<img src="" id="foto"/>
+<img src="" id="iddetalleserviciofoto"/>
 </div>
-<input type="button" onClick="tomarFoto();" value="Capturar"/>
+<input type="button" onClick="capturarFoto();" value="Capturar"/>
 </body>
 </html>
